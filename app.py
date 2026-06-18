@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 import sqlite3
 from flask_mail import Mail, Message
+import os
 app = Flask(__name__)
 
 
@@ -8,10 +9,10 @@ app = Flask(__name__)
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'krishnapatil81609@gmail.com'
+app.config['MAIL_USERNAME'] = os.environ.get("MAIL_USERNAME")
 
 # Yaha Gmail App Password dalna
-app.config['MAIL_PASSWORD'] = 'nuxhsboogyqqtmta'
+app.config['MAIL_PASSWORD'] = os.environ.get("MAIL_PASSWORD")
 
 mail = Mail(app)
 

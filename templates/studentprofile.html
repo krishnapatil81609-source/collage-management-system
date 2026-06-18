@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Student Profile</title>
+
+<style>
+
+body{
+background:#f4f6f9;
+font-family:Segoe UI;
+}
+
+.card{
+width:600px;
+margin:50px auto;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+h1{
+text-align:center;
+color:#1e3c72;
+margin-bottom:20px;
+}
+
+.info{
+margin:15px 0;
+font-size:18px;
+}
+
+span{
+font-weight:bold;
+color:#1e3c72;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="card">
+
+<h1>Student Profile</h1>
+
+<div class="info">
+<span>ID:</span> {{student.id}}
+</div>
+
+<div class="info">
+<span>Name:</span> {{student.name}}
+</div>
+
+<div class="info">
+<span>Course:</span> {{student.course}}
+</div>
+
+<div class="info">
+<span>Semester:</span> {{student.semester}}
+</div>
+
+<div class="info">
+<span>Email:</span> {{student.email}}
+</div>
+
+<div class="info">
+<span>Mobile:</span> {{student.mobile}}
+</div>
+
+</div>
+
+</body>
+</html>

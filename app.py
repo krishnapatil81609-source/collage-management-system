@@ -9,10 +9,10 @@ app = Flask(__name__)
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = os.environ.get("MAIL_USERNAME")
+app.config['MAIL_USERNAME'] = 'krishnapatil81609@gmail.com'
 
 # Yaha Gmail App Password dalna
-app.config['MAIL_PASSWORD'] = os.environ.get("MAIL_PASSWORD")
+app.config['MAIL_PASSWORD'] = 'kqtcoqmvrvcwkfgg'
 
 mail = Mail(app)
 
@@ -38,7 +38,7 @@ Email: {email}
 Message:
 {message}
 """
-
+1
         mail.send(msg)
 
         return redirect("/dashboard")
@@ -109,7 +109,7 @@ INSERT INTO students(student_id,name,age,cource) VALUES (?,?,?,?)
         conn.commit()
         conn.close()
 
-        return redirect("/dashboard")
+        return redirect("/")
 
 
     return render_template("addstudent.html")

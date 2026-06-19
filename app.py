@@ -109,7 +109,7 @@ INSERT INTO students(student_id,name,age,cource) VALUES (?,?,?,?)
         conn.commit()
         conn.close()
 
-        return redirect("/")
+        return redirect("/dashboard")
 
 
     return render_template("addstudent.html")

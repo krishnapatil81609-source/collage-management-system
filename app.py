@@ -39,7 +39,7 @@ Message:
 {message}
 """
 
-        mail.send(msg)
+        #mail.send(msg)
 
         return redirect("/dashboard")
 

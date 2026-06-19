@@ -1,22 +1,10 @@
 from flask import Flask, render_template, request, redirect
 import sqlite3
-from flask_mail import Mail, Message
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 import os
+
 app = Flask(__name__)
-
-
-# Mail Configuration
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'krishnapatil81609@gmail.com'
-
-# Yaha Gmail App Password dalna
-app.config['MAIL_PASSWORD'] = 'ooixnnlxdzomfafq'
-
-mail = Mail(app)
-
-
 
 @app.route("/contact", methods=["POST", "GET"])
 def contact():
@@ -25,29 +13,22 @@ def contact():
         email = request.form["email"]
         message = request.form["message"]
 
-        msg = Message(
-            subject=f"New Message from {name}",
-            sender="krishnapatil81609@gmail.com",
-            recipients=["krishnapatil81609@gmail.com"]
+        msg = Mail(
+            from_email='krishnapatil181609@gmail.com',
+            to_emails='krishnapatil181609@gmail.com',
+            subject=f'New Message from {name}',
+            plain_text_content=f'Name: {name}\nEmail: {email}\nMessage: {message}'
         )
 
-        msg.body = f"""
-Name: {name}
-Email: {email}
-
-Message:
-{message}
-"""
-        print("mail sending")
-
-        mail.send(msg)
-
-        print("succsefully")
+        try:
+            sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+            sg.send(msg)
+        except Exception as e:
+            print(f"Mail error: {e}")
 
         return redirect("/dashboard")
 
     return render_template("dashbord.html")
-
 
 #========================================================================================
 def create_table():

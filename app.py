@@ -38,8 +38,11 @@ Email: {email}
 Message:
 {message}
 """
+        print("mail sending")
 
         mail.send(msg)
+
+        print("succsefully")
 
         return redirect("/dashboard")
 

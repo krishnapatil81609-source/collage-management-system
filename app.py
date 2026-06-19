@@ -38,7 +38,7 @@ Email: {email}
 Message:
 {message}
 """
-1
+
         mail.send(msg)
 
         return redirect("/dashboard")

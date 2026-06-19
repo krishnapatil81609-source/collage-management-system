@@ -12,7 +12,7 @@ app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'krishnapatil81609@gmail.com'
 
 # Yaha Gmail App Password dalna
-app.config['MAIL_PASSWORD'] = 'kqtcoqmvrvcwkfgg'
+app.config['MAIL_PASSWORD'] = 'ooixnnlxdzomfafq'
 
 mail = Mail(app)
 
@@ -39,7 +39,7 @@ Message:
 {message}
 """
 
-        #mail.send(msg)
+        mail.send(msg)
 
         return redirect("/dashboard")
 

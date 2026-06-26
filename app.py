@@ -1,33 +1,11 @@
 from flask import Flask, render_template, request, redirect
 import sqlite3
-from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail
 import os
 
 app = Flask(__name__)
 
 @app.route("/contact", methods=["POST", "GET"])
 def contact():
-    if request.method == "POST":
-        name = request.form["name"]
-        email = request.form["email"]
-        message = request.form["message"]
-
-        msg = Mail(
-            from_email='krishnapatil181609@gmail.com',
-            to_emails='krishnapatil181609@gmail.com',
-            subject=f'New Message from {name}',
-            plain_text_content=f'Name: {name}\nEmail: {email}\nMessage: {message}'
-        )
-
-        try:
-            sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
-            sg.send(msg)
-        except Exception as e:
-            print(f"Mail error: {e}")
-
-        return redirect("/dashboard")
-
     return render_template("dashbord.html")
 
 #========================================================================================
